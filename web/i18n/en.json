@@ -1,0 +1,96 @@
+{
+  "lang": "en",
+  "app": {"tagline": "3D indoor mapping from Wi-Fi CSI"},
+  "auth": {
+    "tab_login": "Sign in", "tab_register": "Create account",
+    "email": "E-mail", "password": "Password", "name": "Name",
+    "enter": "Sign in", "create": "Create account",
+    "pw_hint": "At least 8 characters. The first account created becomes the administrator.",
+    "bad_login": "Wrong e-mail or password.",
+    "created": "Account created.",
+    "email_exists": "That e-mail is already registered.",
+    "pw_short": "The password needs at least 8 characters."
+  },
+  "nav": {"map": "Map", "history": "History", "admin": "Users", "logout": "Sign out"},
+  "proj": {
+    "title": "Projects", "new": "New", "search": "Search project...",
+    "name": "Project name", "desc": "Description", "tags": "Tags",
+    "room_x": "Width X (m)", "room_y": "Depth Y (m)", "room_z": "Height Z (m)",
+    "router_h": "Router height (m)", "voxel": "Reconstruction voxel (m)",
+    "preset": "Quality", "create": "Create project", "delete": "Delete project",
+    "empty": "Create your first project to start mapping.",
+    "created": "Project created.", "deleted": "Project deleted.",
+    "confirm_delete": "Delete this project and everything linked to it?"
+  },
+  "cap": {
+    "title": "Area captures", "run": "Map area", "cancel": "Cancel",
+    "label": "Capture label", "saved": "Area mapped and stored.",
+    "none": "No captures in this project.",
+    "running": "Capturing...", "done": "Capture finished",
+    "error": "Capture failed", "select_project": "Select a project first.",
+    "preset_fast": "Fast", "preset_normal": "Standard", "preset_precise": "Precise",
+    "phase_calib": "Link calibration", "phase_scan": "CSI sweep",
+    "phase_geom": "Geometry (ToF + AoA)", "phase_recon": "3D reconstruction",
+    "confirm_delete": "Delete this capture?"
+  },
+  "stat": {
+    "title": "Metrics", "points": "Reflections", "triangles": "Triangles",
+    "volume": "Volume", "coverage": "Coverage <25cm", "error": "Mean error",
+    "snr": "SNR", "method": "Method", "duration": "Duration"
+  },
+  "view": {
+    "title": "Display", "top": "Top", "front": "Front", "side": "Side", "iso": "Isometric",
+    "reset": "Recenter", "walk": "Free navigation", "points": "Points", "wire": "Wireframe",
+    "solid": "Surface", "size": "Points", "grid": "Floor metric grid",
+    "axes": "X/Y/Z axes", "router": "Router at origin",
+    "traj": "Sweep trajectory", "room": "Room box"
+  },
+  "meas": {
+    "title": "Measurements", "width": "Width", "depth": "Depth", "height": "Height",
+    "distance": "3D distance",
+    "hint": "Pick a ruler and click two points on the cloud. Esc cancels · Enter closes the vector.",
+    "snap": "Snap to 1 cm grid", "show": "Show measurements in scene",
+    "show_vec": "Show vectors in scene", "saved": "Measurement stored",
+    "none": "No measurements yet. Use the rulers above.",
+    "point1": "First point marked. Click the second one.", "confirm_delete": "Delete this measurement?",
+    "kind_width": "Width", "kind_depth": "Depth", "kind_height": "Height",
+    "kind_distance": "Distance"
+  },
+  "tool": {"title": "Dynamic rulers"},
+  "vec": {
+    "title": "Vectors", "new": "Vector/polyline", "closed": "Close outline",
+    "finish": "Finish", "undo": "Undo point", "none": "No vectors.",
+    "total": "Length", "perimeter": "Perimeter", "area": "Floor area",
+    "segments": "Segments", "saved": "Vector stored", "min": "Mark at least 2 points.",
+    "confirm_delete": "Delete this vector?"
+  },
+  "exp": {
+    "title": "Export", "scope": "Content", "format": "Format", "fields": "Fields",
+    "do": "Generate file", "measurements": "Measurements and distances",
+    "vectors": "Vectors and perimeters", "summary": "Capture summary",
+    "cloud": "Point cloud", "mesh": "3D mesh",
+    "none": "No exports yet.", "need_capture": "Choose a capture for this format.",
+    "ready": "File ready", "download": "Download"
+  },
+  "hist": {
+    "title": "History of mapped areas", "reload": "Refresh",
+    "activity": "Recent activity", "empty": "Nothing mapped yet.",
+    "captures": "captures", "measures": "measurements", "vectors": "vectors", "open": "Open"
+  },
+  "users": {
+    "title": "User management", "name": "Name", "role": "Role", "active": "Active",
+    "projects": "Projects", "last_login": "Last sign-in", "hint": "Every user owns their projects, captures, measurements and vectors. Administrators can manage accounts.",
+    "saved": "User updated.", "only_admin": "Only administrators see this area."
+  },
+  "hud": {"ready": "Ready", "picking": "Pick the first point", "picking2": "Pick the second point", "vector": "Click the vector vertices"},
+  "empty": {
+    "title": "No area mapped yet",
+    "text": "Pick a project on the left (or create one), press Map area and watch the capture in real time."
+  },
+  "help": {"controls_short": "Orbit: left button · Pan: right button · Zoom: wheel · WASD: free"},
+  "msg": {
+    "saved": "Saved.", "deleted": "Removed.", "error": "Something went wrong.",
+    "offline": "Server unavailable.", "copied": "Copied.",
+    "too_many": "Too many requests, wait a moment."
+  }
+}

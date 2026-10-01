@@ -1,0 +1,24 @@
+[Unit]
+Description=Wi-Fi CSI Space Mapper (portal web de mapeamento 3D por CSI)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=__USER__
+WorkingDirectory=__ROOT__
+Environment=WSM_HOST=0.0.0.0
+Environment=WSM_PORT=__PORT__
+Environment=WSM_DATA=__ROOT__/data
+EnvironmentFile=-__ROOT__/.env
+ExecStart=__ROOT__/.venv/bin/python -m uvicorn server.app:app --host 0.0.0.0 --port __PORT__ --workers 1
+Restart=on-failure
+RestartSec=4
+StandardOutput=append:__ROOT__/logs/systemd.log
+StandardError=append:__ROOT__/logs/systemd.log
+# Endurecimento basico
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

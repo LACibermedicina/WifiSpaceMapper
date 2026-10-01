@@ -1,0 +1,16 @@
+# Nucleo do portal web
+fastapi>=0.110
+uvicorn>=0.27
+python-multipart>=0.0.9
+
+# Pipeline de DSP / reconstrucao (mesmas do software original)
+numpy>=1.24
+scipy>=1.10
+scikit-learn>=1.3
+
+# Relatorios e planilhas
+reportlab>=4.0
+openpyxl>=3.1
+
+# OPCIONAL (malha suave Poisson/Alpha Shapes) -- instalado pelo install.sh
+# open3d>=0.17

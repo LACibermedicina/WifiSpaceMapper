@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Wi-Fi CSI Space Mapper</title>
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+<!-- ===================== TELA DE ENTRADA ===================== -->
+<section id="gate" class="gate">
+  <div class="gate-bg"></div>
+  <div class="gate-card">
+    <header class="gate-head">
+      <div class="brand">
+        <div class="brand-mark">
+          <span></span><span></span><span></span>
+        </div>
+        <div>
+          <h1>Wi-Fi CSI <b>Space Mapper</b></h1>
+          <p data-i18n="app.tagline">Mapeamento 3D de ambientes por CSI Wi-Fi</p>
+        </div>
+      </div>
+      <div class="lang-switch" id="langSwitchGate"></div>
+    </header>
+
+    <div class="gate-tabs">
+      <button class="tab is-active" data-tab="login" data-i18n="auth.tab_login">Entrar</button>
+      <button class="tab" data-tab="register" data-i18n="auth.tab_register">Criar conta</button>
+    </div>
+
+    <form id="formLogin" class="gate-form">
+      <label><span data-i18n="auth.email">E-mail</span>
+        <input type="email" name="email" required autocomplete="username" placeholder="nome@dominio.com"></label>
+      <label><span data-i18n="auth.password">Senha</span>
+        <input type="password" name="password" required autocomplete="current-password" placeholder="••••••••"></label>
+      <button class="btn primary big" type="submit" data-i18n="auth.enter">Entrar</button>
+    </form>
+
+    <form id="formRegister" class="gate-form hidden">
+      <label><span data-i18n="auth.name">Nome</span>
+        <input type="text" name="name" autocomplete="name" placeholder="Maria Silva"></label>
+      <label><span data-i18n="auth.email">E-mail</span>
+        <input type="email" name="email" required autocomplete="username"></label>
+      <label><span data-i18n="auth.password">Senha</span>
+        <input type="password" name="password" required minlength="8" autocomplete="new-password"></label>
+      <p class="hint" data-i18n="auth.pw_hint">Minimo de 8 caracteres. A primeira conta criada vira administradora.</p>
+      <button class="btn primary big" type="submit" data-i18n="auth.create">Criar conta</button>
+    </form>
+
+    <p class="gate-msg" id="gateMsg"></p>
+    <footer class="gate-foot">
+      <span data-i18n="help.controls_short">Orbita: botao esquerdo · Pan: direito · Zoom: roda · WASD: livre</span>
+    </footer>
+  </div>
+</section>
+
+<!-- ===================== APLICACAO ===================== -->
+<section id="app" class="app hidden">
+  <header class="topbar">
+    <div class="brand small">
+      <div class="brand-mark"><span></span><span></span><span></span></div>
+      <strong>CSI <b>Space Mapper</b></strong>
+    </div>
+
+    <nav class="tabs-main">
+      <button class="mtab is-active" data-view="map" data-i18n="nav.map">Mapa</button>
+      <button class="mtab" data-view="history" data-i18n="nav.history">Historico</button>
+      <button class="mtab" data-view="admin" data-i18n="nav.admin">Usuarios</button>
+    </nav>
+
+    <div class="topbar-right">
+      <div class="lang-switch" id="langSwitch"></div>
+      <div class="userbox">
+        <div class="avatar" id="userAvatar">?</div>
+        <div class="userbox-info"><b id="userName">—</b><small id="userRole">—</small></div>
+        <button class="btn ghost tiny" id="btnLogout" data-i18n="nav.logout">Sair</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ---------------- VISTA MAPA ---------------- -->
+  <main class="view view-map" id="viewMap">
+    <aside class="col col-left">
+      <div class="panel">
+        <div class="panel-head">
+          <h3 data-i18n="proj.title">Projetos</h3>
+          <button class="btn tiny primary" id="btnNewProject" data-i18n="proj.new">Novo</button>
+        </div>
+        <input class="search" id="projSearch" data-i18n-ph="proj.search" placeholder="Buscar projeto...">
+        <ul class="plist" id="projectList"></ul>
+      </div>
+
+      <div class="panel grow">
+        <div class="panel-head"><h3 data-i18n="cap.title">Capturas de area</h3>
+          <span class="count" id="capCount">0</span></div>
+        <ul class="clist" id="captureList"></ul>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h3 data-i18n="stat.title">Metricas</h3></div>
+        <div class="metrics" id="metrics">
+          <div class="metric"><span data-i18n="stat.points">Reflexoes</span><b id="mPoints">—</b></div>
+          <div class="metric"><span data-i18n="stat.triangles">Triangulos</span><b id="mTris">—</b></div>
+          <div class="metric"><span data-i18n="stat.volume">Volume</span><b id="mVol">—</b></div>
+          <div class="metric"><span data-i18n="stat.coverage">Cobertura &lt;25cm</span><b id="mCov">—</b></div>
+          <div class="metric"><span data-i18n="stat.error">Erro medio</span><b id="mErr">—</b></div>
+          <div class="metric"><span data-i18n="stat.snr">SNR</span><b id="mSnr">—</b></div>
+          <div class="metric wide"><span data-i18n="stat.method">Metodo</span><b id="mMethod">—</b></div>
+          <div class="metric wide"><span data-i18n="stat.duration">Duracao</span><b id="mDur">—</b></div>
+        </div>
+      </div>
+    </aside>
+
+    <section class="col col-center">
+      <div class="stage">
+        <canvas id="gl"></canvas>
+        <div class="hud">
+          <div class="hud-left" id="hudStatus" data-i18n="hud.ready">Pronto</div>
+          <div class="hud-right">
+            <span class="chip" id="chipFps">— fps</span>
+            <span class="chip" id="chipMode">—</span>
+          </div>
+        </div>
+        <div class="overlay-progress" id="progressWrap">
+          <div class="pg-ring"><div class="pg-fill" id="pgFill"></div><span id="pgPct">0%</span></div>
+          <div class="pg-text"><b id="pgPhase">—</b><small id="pgMsg"></small></div>
+        </div>
+        <div class="ruler-live hidden" id="rulerLive">
+          <b id="rulerLiveVal">0,00 m</b><small id="rulerLiveKind"></small>
+        </div>
+        <div class="empty-stage" id="emptyStage">
+          <div class="pulse-dot"></div>
+          <h2 data-i18n="empty.title">Nenhuma area mapeada ainda</h2>
+          <p data-i18n="empty.text">Escolha um projeto a esquerda (ou crie um novo), clique em Mapear area e acompanhe a captura em tempo real.</p>
+        </div>
+      </div>
+
+      <div class="stagebar">
+        <button class="btn primary" id="btnMap" data-i18n="cap.run">Mapear area</button>
+        <button class="btn danger" id="btnCancel" disabled data-i18n="cap.cancel">Cancelar</button>
+        <span class="sep"></span>
+        <div class="seg" id="viewSeg">
+          <button data-view="top" data-i18n="view.top">Topo</button>
+          <button data-view="front" data-i18n="view.front">Frente</button>
+          <button data-view="side" data-i18n="view.side">Lado</button>
+          <button data-view="iso" class="is-active" data-i18n="view.iso">Isometrica</button>
+        </div>
+        <button class="btn ghost" id="btnReset" data-i18n="view.reset">Centralizar</button>
+        <button class="btn ghost" id="btnWalk" data-i18n="view.walk">Navegacao livre</button>
+        <span class="sep"></span>
+        <div class="seg" id="styleSeg">
+          <button data-style="points" class="is-active" data-i18n="view.points">Pontos</button>
+          <button data-style="wire" data-i18n="view.wire">Aramado</button>
+          <button data-style="solid" data-i18n="view.solid">Superficie</button>
+        </div>
+        <label class="range"><span data-i18n="view.size">Pontos</span>
+          <input type="range" id="ptSize" min="1" max="14" value="5"></label>
+      </div>
+    </section>
+
+    <aside class="col col-right">
+      <div class="panel">
+        <div class="panel-head"><h3 data-i18n="tool.title">Reguas dinamicas</h3></div>
+        <div class="tool-grid" id="toolGrid">
+          <button class="tool" data-measure="width"><i class="ic-w"></i><span data-i18n="meas.width">Largura</span></button>
+          <button class="tool" data-measure="depth"><i class="ic-d"></i><span data-i18n="meas.depth">Profundidade</span></button>
+          <button class="tool" data-measure="height"><i class="ic-h"></i><span data-i18n="meas.height">Altura</span></button>
+          <button class="tool" data-measure="distance"><i class="ic-x"></i><span data-i18n="meas.distance">Distancia 3D</span></button>
+          <button class="tool" data-measure="vector"><i class="ic-p"></i><span data-i18n="vec.new">Vetor/polilinha</span></button>
+        </div>
+        <p class="hint" id="toolHint" data-i18n="meas.hint">Escolha uma regua e clique dois pontos na nuvem. Esc cancela · Enter conclui o vetor.</p>
+        <label class="check"><input type="checkbox" id="chkSnap" checked><span data-i18n="meas.snap">Encaixar na grade de 1 cm</span></label>
+        <label class="check"><input type="checkbox" id="chkShowMeas" checked><span data-i18n="meas.show">Mostrar medidas na cena</span></label>
+        <label class="check"><input type="checkbox" id="chkShowVec" checked><span data-i18n="meas.show_vec">Mostrar vetores na cena</span></label>
+      </div>
+
+      <div class="panel grow">
+        <div class="panel-head"><h3 data-i18n="meas.title">Medidas</h3><span class="count" id="measCount">0</span></div>
+        <ul class="rows" id="measList"></ul>
+      </div>
+
+      <div class="panel grow">
+        <div class="panel-head"><h3 data-i18n="vec.title">Vetores</h3><span class="count" id="vecCount">0</span></div>
+        <ul class="rows" id="vecList"></ul>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h3 data-i18n="view.title">Exibicao</h3></div>
+        <label class="check"><input type="checkbox" id="chkGrid" checked><span data-i18n="view.grid">Grade metrica do piso</span></label>
+        <label class="check"><input type="checkbox" id="chkAxes" checked><span data-i18n="view.axes">Eixos X/Y/Z</span></label>
+        <label class="check"><input type="checkbox" id="chkRouter" checked><span data-i18n="view.router">Roteador na origem</span></label>
+        <label class="check"><input type="checkbox" id="chkTraj" checked><span data-i18n="view.traj">Trajetoria de varredura</span></label>
+        <label class="check"><input type="checkbox" id="chkRoom" checked><span data-i18n="view.room">Caixa do comodo</span></label>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h3 data-i18n="exp.title">Exportar</h3></div>
+        <div class="grid2">
+          <label><span data-i18n="exp.scope">Conteudo</span>
+            <select id="expScope">
+              <option value="measurements" data-i18n="exp.measurements">Medidas e distancias</option>
+              <option value="vectors" data-i18n="exp.vectors">Vetores e perimetros</option>
+              <option value="capture_summary" data-i18n="exp.summary">Resumo das capturas</option>
+              <option value="cloud" data-i18n="exp.cloud">Nuvem de pontos</option>
+              <option value="mesh" data-i18n="exp.mesh">Malha 3D</option>
+            </select></label>
+          <label><span data-i18n="exp.format">Formato</span>
+            <select id="expFormat"></select></label>
+        </div>
+        <div class="fields" id="expFields"></div>
+        <button class="btn primary wide" id="btnExport" data-i18n="exp.do">Gerar arquivo</button>
+        <ul class="rows small" id="expList"></ul>
+      </div>
+    </aside>
+  </main>
+
+  <!-- ---------------- VISTA HISTORICO ---------------- -->
+  <main class="view view-history hidden" id="viewHistory">
+    <div class="wide-panel">
+      <div class="panel-head"><h2 data-i18n="hist.title">Historico de areas mapeadas</h2>
+        <button class="btn ghost tiny" id="btnReloadHist" data-i18n="hist.reload">Atualizar</button></div>
+      <div class="cards" id="histCards"></div>
+      <div class="panel-head mt"><h3 data-i18n="hist.activity">Atividade recente</h3></div>
+      <ul class="timeline" id="histTimeline"></ul>
+    </div>
+  </main>
+
+  <!-- ---------------- VISTA USUARIOS ---------------- -->
+  <main class="view view-admin hidden" id="viewAdmin">
+    <div class="wide-panel">
+      <div class="panel-head"><h2 data-i18n="users.title">Controle de usuarios</h2></div>
+      <p class="hint" data-i18n="users.hint">Cada usuario tem os proprios projetos, capturas, medidas e vetores. Administradores podem gerenciar contas.</p>
+      <table class="utable">
+        <thead><tr>
+          <th data-i18n="users.name">Nome</th><th data-i18n="auth.email">E-mail</th>
+          <th data-i18n="users.role">Papel</th><th data-i18n="users.active">Ativo</th>
+          <th data-i18n="users.projects">Projetos</th><th data-i18n="users.last_login">Ultimo acesso</th>
+          <th></th></tr></thead>
+        <tbody id="usersBody"></tbody>
+      </table>
+      <p class="hint" id="usersMsg"></p>
+    </div>
+  </main>
+</section>
+
+<!-- Mapa de resposta rapida i18n (fallback offline) -->
+<script src="js/i18n.js"></script>
+<script src="js/gl.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

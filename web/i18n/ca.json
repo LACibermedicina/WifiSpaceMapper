@@ -1,0 +1,96 @@
+{
+  "lang": "ca",
+  "app": {"tagline": "Mapatge 3D d'interiors amb CSI Wi-Fi"},
+  "auth": {
+    "tab_login": "Entra", "tab_register": "Crea un compte",
+    "email": "Correu electronic", "password": "Contrasenya", "name": "Nom",
+    "enter": "Entra", "create": "Crea el compte",
+    "pw_hint": "Minim de 8 caracters. El primer compte creat sera administrador.",
+    "bad_login": "Correu o contrasenya incorrectes.",
+    "created": "Compte creat.",
+    "email_exists": "Aquest correu ja esta registrat.",
+    "pw_short": "La contrasenya necessita com a minim 8 caracters."
+  },
+  "nav": {"map": "Mapa", "history": "Historial", "admin": "Usuaris", "logout": "Surt"},
+  "proj": {
+    "title": "Projectes", "new": "Nou", "search": "Cerca un projecte...",
+    "name": "Nom del projecte", "desc": "Descripcio", "tags": "Etiquetes",
+    "room_x": "Amplada X (m)", "room_y": "Profunditat Y (m)", "room_z": "Altura Z (m)",
+    "router_h": "Altura del router (m)", "voxel": "Voxel de reconstruccio (m)",
+    "preset": "Qualitat", "create": "Crea el projecte", "delete": "Elimina el projecte",
+    "empty": "Crea el primer projecte per comencar a mapar.",
+    "created": "Projecte creat.", "deleted": "Projecte eliminat.",
+    "confirm_delete": "Eliminar aquest projecte i tot el que hi esta vinculat?"
+  },
+  "cap": {
+    "title": "Captures d'area", "run": "Mapa l'area", "cancel": "Cancel·la",
+    "label": "Etiqueta de la captura", "saved": "Area mapada i desada.",
+    "none": "Cap captura en aquest projecte.",
+    "running": "Capturant...", "done": "Captura acabada",
+    "error": "La captura ha fallat", "select_project": "Selecciona abans un projecte.",
+    "preset_fast": "Rapida", "preset_normal": "Estandard", "preset_precise": "Precisa",
+    "phase_calib": "Calibratge de l'enllac", "phase_scan": "Escombrat CSI",
+    "phase_geom": "Geometria (ToF + AoA)", "phase_recon": "Reconstruccio 3D",
+    "confirm_delete": "Eliminar aquesta captura?"
+  },
+  "stat": {
+    "title": "Metriques", "points": "Reflexions", "triangles": "Triangles",
+    "volume": "Volum", "coverage": "Cobertura <25cm", "error": "Error mitja",
+    "snr": "SNR", "method": "Metode", "duration": "Durada"
+  },
+  "view": {
+    "title": "Visualitzacio", "top": "Superior", "front": "Frontal", "side": "Lateral",
+    "iso": "Isometrica", "reset": "Centra", "walk": "Navegacio lliure",
+    "points": "Punts", "wire": "Filar", "solid": "Superficie", "size": "Punts",
+    "grid": "Graella metrica del terra", "axes": "Eixos X/Y/Z",
+    "router": "Router a l'origen", "traj": "Trajectoria d'escombrat", "room": "Caixa de la sala"
+  },
+  "meas": {
+    "title": "Mesures", "width": "Amplada", "depth": "Profunditat", "height": "Altura",
+    "distance": "Distancia 3D",
+    "hint": "Tria un regle i fes clic en dos punts del nuvol. Esc cancel·la · Enter tanca el vector.",
+    "snap": "Ajusta a la graella d'1 cm", "show": "Mostra les mesures a l'escena",
+    "show_vec": "Mostra els vectors a l'escena", "saved": "Mesura desada",
+    "none": "Sense mesures. Fes servir els regles de dalt.",
+    "point1": "Primer punt marcat. Fes clic al segon.", "confirm_delete": "Eliminar aquesta mesura?",
+    "kind_width": "Amplada", "kind_depth": "Profunditat", "kind_height": "Altura",
+    "kind_distance": "Distancia"
+  },
+  "tool": {"title": "Regles dinamiques"},
+  "vec": {
+    "title": "Vectors", "new": "Vector/polilinia", "closed": "Tanca el contorn",
+    "finish": "Acaba", "undo": "Desfes el punt", "none": "Sense vectors.",
+    "total": "Longitud", "perimeter": "Perimetre", "area": "Area al terra",
+    "segments": "Segments", "saved": "Vector desat", "min": "Marca com a minim 2 punts.",
+    "confirm_delete": "Eliminar aquest vector?"
+  },
+  "exp": {
+    "title": "Exporta", "scope": "Contingut", "format": "Format", "fields": "Camps",
+    "do": "Genera el fitxer", "measurements": "Mesures i distancies",
+    "vectors": "Vectors i perimetres", "summary": "Resum de les captures",
+    "cloud": "Nuvol de punts", "mesh": "Malla 3D",
+    "none": "Cap exportacio encara.", "need_capture": "Tria una captura per a aquest format.",
+    "ready": "Fitxer a punt", "download": "Baixa"
+  },
+  "hist": {
+    "title": "Historial d'arees mapades", "reload": "Actualitza",
+    "activity": "Activitat recent", "empty": "Encara no hi ha res mapat.",
+    "captures": "captures", "measures": "mesures", "vectors": "vectors", "open": "Obre"
+  },
+  "users": {
+    "title": "Gestio d'usuaris", "name": "Nom", "role": "Rol", "active": "Actiu",
+    "projects": "Projectes", "last_login": "Darrer acces", "hint": "Cada usuari te els seus projectes, captures, mesures i vectors. Els administradors gestionen els comptes.",
+    "saved": "Usuari actualitzat.", "only_admin": "Nomes els administradors veuen aquesta area."
+  },
+  "hud": {"ready": "A punt", "picking": "Tria el primer punt", "picking2": "Tria el segon punt", "vector": "Fes clic als vertexs del vector"},
+  "empty": {
+    "title": "Encara no hi ha cap area mapada",
+    "text": "Tria un projecte a l'esquerra (o crea'n un), prem Mapa l'area i segueix la captura en temps real."
+  },
+  "help": {"controls_short": "Orbita: boto esquerre · Pan: dret · Zoom: roda · WASD: lliure"},
+  "msg": {
+    "saved": "Desat.", "deleted": "Eliminat.", "error": "Hi ha hagut un error.",
+    "offline": "Servidor no disponible.", "copied": "Copiat.",
+    "too_many": "Massa peticions, espera un moment."
+  }
+}

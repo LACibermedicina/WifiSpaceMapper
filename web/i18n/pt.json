@@ -1,0 +1,96 @@
+{
+  "lang": "pt",
+  "app": {"tagline": "Mapeamento 3D de ambientes por CSI Wi-Fi"},
+  "auth": {
+    "tab_login": "Entrar", "tab_register": "Criar conta",
+    "email": "E-mail", "password": "Senha", "name": "Nome",
+    "enter": "Entrar", "create": "Criar conta",
+    "pw_hint": "Minimo de 8 caracteres. A primeira conta criada vira administradora.",
+    "bad_login": "E-mail ou senha incorretos.",
+    "created": "Conta criada com sucesso.",
+    "email_exists": "Este e-mail ja esta registado.",
+    "pw_short": "A senha precisa de pelo menos 8 caracteres."
+  },
+  "nav": {"map": "Mapa", "history": "Historico", "admin": "Usuarios", "logout": "Sair"},
+  "proj": {
+    "title": "Projetos", "new": "Novo", "search": "Buscar projeto...",
+    "name": "Nome do projeto", "desc": "Descricao", "tags": "Etiquetas",
+    "room_x": "Largura X (m)", "room_y": "Profundidade Y (m)", "room_z": "Altura Z (m)",
+    "router_h": "Altura do roteador (m)", "voxel": "Voxel de reconstrucao (m)",
+    "preset": "Qualidade", "create": "Criar projeto", "delete": "Excluir projeto",
+    "empty": "Crie o primeiro projeto para comecar a mapear.",
+    "created": "Projeto criado.", "deleted": "Projeto excluido.",
+    "confirm_delete": "Excluir este projeto e tudo o que esta vinculado a ele?"
+  },
+  "cap": {
+    "title": "Capturas de area", "run": "Mapear area", "cancel": "Cancelar",
+    "label": "Rotulo da captura", "saved": "Area mapeada e guardada.",
+    "none": "Nenhuma captura neste projeto.",
+    "running": "Capturando...", "done": "Captura concluida",
+    "error": "Falha na captura", "select_project": "Selecione um projeto primeiro.",
+    "preset_fast": "Rapida", "preset_normal": "Padrao", "preset_precise": "Precisa",
+    "phase_calib": "Calibracao do enlace", "phase_scan": "Varredura CSI",
+    "phase_geom": "Geometria (ToF + AoA)", "phase_recon": "Reconstrucao 3D",
+    "confirm_delete": "Excluir esta captura?"
+  },
+  "stat": {
+    "title": "Metricas", "points": "Reflexoes", "triangles": "Triangulos",
+    "volume": "Volume", "coverage": "Cobertura <25cm", "error": "Erro medio",
+    "snr": "SNR", "method": "Metodo", "duration": "Duracao"
+  },
+  "view": {
+    "title": "Exibicao", "top": "Topo", "front": "Frente", "side": "Lado", "iso": "Isometrica",
+    "reset": "Centralizar", "walk": "Navegacao livre", "points": "Pontos", "wire": "Aramado",
+    "solid": "Superficie", "size": "Pontos", "grid": "Grade metrica do piso",
+    "axes": "Eixos X/Y/Z", "router": "Roteador na origem",
+    "traj": "Trajetoria de varredura", "room": "Caixa do comodo"
+  },
+  "meas": {
+    "title": "Medidas", "width": "Largura", "depth": "Profundidade", "height": "Altura",
+    "distance": "Distancia 3D",
+    "hint": "Escolha uma regua e clique dois pontos na nuvem. Esc cancela · Enter conclui o vetor.",
+    "snap": "Encaixar na grade de 1 cm", "show": "Mostrar medidas na cena",
+    "show_vec": "Mostrar vetores na cena", "saved": "Medida guardada",
+    "none": "Sem medidas. Use as reguas acima.",
+    "point1": "Primeiro ponto marcado. Clique o segundo.", "confirm_delete": "Excluir esta medida?",
+    "kind_width": "Largura", "kind_depth": "Profundidade", "kind_height": "Altura",
+    "kind_distance": "Distancia"
+  },
+  "tool": {"title": "Reguas dinamicas"},
+  "vec": {
+    "title": "Vetores", "new": "Vetor/polilinha", "closed": "Fechar contorno",
+    "finish": "Concluir", "undo": "Desfazer ponto", "none": "Sem vetores.",
+    "total": "Comprimento", "perimeter": "Perimetro", "area": "Area no piso",
+    "segments": "Segmentos", "saved": "Vetor guardado", "min": "Marque pelo menos 2 pontos.",
+    "confirm_delete": "Excluir este vetor?"
+  },
+  "exp": {
+    "title": "Exportar", "scope": "Conteudo", "format": "Formato", "fields": "Campos",
+    "do": "Gerar arquivo", "measurements": "Medidas e distancias",
+    "vectors": "Vetores e perimetros", "summary": "Resumo das capturas",
+    "cloud": "Nuvem de pontos", "mesh": "Malha 3D",
+    "none": "Nenhuma exportacao ainda.", "need_capture": "Escolha uma captura para este formato.",
+    "ready": "Arquivo pronto", "download": "Baixar"
+  },
+  "hist": {
+    "title": "Historico de areas mapeadas", "reload": "Atualizar",
+    "activity": "Atividade recente", "empty": "Nada mapeado ainda.",
+    "captures": "capturas", "measures": "medidas", "vectors": "vetores", "open": "Abrir"
+  },
+  "users": {
+    "title": "Controle de usuarios", "name": "Nome", "role": "Papel", "active": "Ativo",
+    "projects": "Projetos", "last_login": "Ultimo acesso", "hint": "Cada usuario tem os proprios projetos, capturas, medidas e vetores. Administradores podem gerenciar contas.",
+    "saved": "Usuario atualizado.", "only_admin": "Apenas administradores veem esta area."
+  },
+  "hud": {"ready": "Pronto", "picking": "Escolha o primeiro ponto", "picking2": "Escolha o segundo ponto", "vector": "Clique os vertices do vetor"},
+  "empty": {
+    "title": "Nenhuma area mapeada ainda",
+    "text": "Escolha um projeto a esquerda (ou crie um novo), clique em Mapear area e acompanhe a captura em tempo real."
+  },
+  "help": {"controls_short": "Orbita: botao esquerdo · Pan: direito · Zoom: roda · WASD: livre"},
+  "msg": {
+    "saved": "Guardado.", "deleted": "Removido.", "error": "Ocorreu um erro.",
+    "offline": "Servidor indisponivel.", "copied": "Copiado.",
+    "too_many": "Demasiados pedidos, aguarde um instante."
+  }
+}

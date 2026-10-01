@@ -1,0 +1,9 @@
+# Dependências do Mapeador 3D de Espaço por CSI Wi-Fi
+PySide6>=6.5
+vispy>=0.14
+open3d>=0.17
+numpy>=1.24
+scipy>=1.10
+scikit-learn>=1.3
+# Opcional: leitura de CSI por porta serial (ESP32-CSI / Nexmon)
+pyserial>=3.5
